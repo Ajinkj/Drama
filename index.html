@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Drama Sounds</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Bible Drama Sounds</h1>
+        <div class="row">
+            <!-- Background Sounds -->
+            <div class="col-md-4">
+                <h2>Background Sounds</h2>
+                <button class="btn btn-primary" onclick="playSound('background1.mp3')">Sound 1</button>
+                <button class="btn btn-primary" onclick="playSound('background2.mp3')">Sound 2</button>
+                <!-- Add more buttons as needed -->
+            </div>
+            <!-- Tunes -->
+            <div class="col-md-4">
+                <h2>Tunes</h2>
+                <button class="btn btn-primary" onclick="playSound('tune1.mp3')">Tune 1</button>
+                <button class="btn btn-primary" onclick="playSound('tune2.mp3')">Tune 2</button>
+                <!-- Add more buttons as needed -->
+            </div>
+            <!-- Special Sounds -->
+            <div class="col-md-4">
+                <h2>Special Sounds</h2>
+                <button class="btn btn-primary" onclick="playSound('special1.mp3')">Special 1</button>
+                <button class="btn btn-primary" onclick="playSound('special2.mp3')">Special 2</button>
+                <!-- Add more buttons as needed -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap and JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // JavaScript function to play audio
+        function playSound(soundFileName) {
+            var audio = new Audio(soundFileName);
+            audio.play();
+        }
+    </script>
+</body>
+</html>
