@@ -1,16 +1,16 @@
 {
-  "name": "Bible Drama Sounds",
-  "short_name": "Drama Sounds",
-  "description": "A soundboard for Bible drama",
-  "start_url": "./index.html",
-  "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#007bff",
-  "icons": [
-    {
-      "src": "icon.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    }
-  ]
-}
+    "name": "Bible Drama Sounds",
+    "short_name": "Drama Sounds",
+    "description": "A soundboard for Bible drama",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#007bff",
+    "icons": [
+      {
+        "src": "drama.jpg",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ]
+  }

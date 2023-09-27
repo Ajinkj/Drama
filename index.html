@@ -8,35 +8,68 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
 
+    <style>
+        /* Custom CSS for additional styling */
+        /* Add your custom styles here */
+    </style>
 </head>
 <body>
-    <div class="container mt-4">
+    <header class="bg-primary text-light text-center py-3">
         <h1>Bible Drama Sounds</h1>
-        <button id="installButton" style="display: none;">Install App</button>
+    </header>
+
+    <div class="container my-4">
+        
+        
+        <!-- Center the "Stop Sound" button -->
+        <div class="text-center">
+            <button id="stopSoundButton" class="btn btn-danger btn-lg mb-3" onclick="stopAllSounds()">Stop Sound</button>
+        </div>
 
         <div class="row">
             <!-- Background Sounds -->
             <div class="col-md-4">
-                <h2>Background Sounds</h2>
-                <button class="btn btn-primary" onclick="playSound('AUD-20221125-WA0022.mp3')">Sound 1</button>
-                <button class="btn btn-primary" onclick="playSound('Panipaali-2 - NJ.m4a')">Sound 2</button>
+                <h2 class="text-primary text-center">Background Sounds</h2>
+                <button class="btn btn-outline-primary btn-lg" onclick="playSound('AUD-20221125-WA0022.mp3')">Sound 1</button>
+                <button class="btn btn-outline-primary btn-lg" onclick="playSound('Panipaali-2 - NJ.m4a')">Sound 2</button>
                 <!-- Add more buttons as needed -->
             </div>
+            
+            <!-- Horizontal line (separator) -->
+            <div class="col-md-4">
+                <hr class="my-4">
+            </div>
+
             <!-- Tunes -->
             <div class="col-md-4">
-                <h2>Tunes</h2>
-                <button class="btn btn-primary" onclick="playSound('AUD-20221125-WA0022.mp3')">Tune 1</button>
-                <button class="btn btn-primary" onclick="playSound('tune2.mp3')">Tune 2</button>
+                <h2 class="text-primary text-center">Tunes</h2>
+                <button class="btn btn-outline-primary btn-lg" onclick="playSound('AUD-20221125-WA0022.mp3')">Tune 1</button>
+                <button class="btn btn-outline-primary btn-lg" onclick="playSound('tune2.mp3')">Tune 2</button>
                 <!-- Add more buttons as needed -->
             </div>
+
+            <!-- Horizontal line (separator) -->
+            <div class="col-md-4">
+                <hr class="my-4">
+            </div>
+
             <!-- Special Sounds -->
             <div class="col-md-4">
-                <h2>Special Sounds</h2>
-                <button class="btn btn-primary" onclick="playSound('special1.mp3')">Special 1</button>
-                <button class="btn btn-primary" onclick="playSound('special2.mp3')">Special 2</button>
+                <h2 class="text-primary text-center">Special Sounds</h2>
+                <button class="btn btn-outline-primary btn-lg" onclick="playSound('special1.mp3')">Special 1</button>
+                <button class="btn btn-outline-primary btn-lg" onclick="playSound('special2.mp3')">Special 2</button>
                 <!-- Add more buttons as needed -->
             </div>
         </div>
+        <!-- Horizontal line (separator) -->
+        <div class="col-md-4">
+            <hr class="my-4">
+        </div>
+        <button id="installButton" class="btn btn-primary btn-lg mb-3">Install App</button>
+        <!-- Copyright statement -->
+        <footer class="text-center mt-5">
+            <p>&copy; 2023 Developed by Ajin K J, Powered by ThinkerBytes</p>
+        </footer>
     </div>
 
     <!-- Include Bootstrap and JavaScript -->
@@ -45,46 +78,31 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-
-        // Get a reference to the install button
-const installButton = document.getElementById('installButton');
-
-// Check if the app can be installed and if it's not already installed
-window.addEventListener('beforeinstallprompt', (event) => {
-  event.preventDefault(); // Prevent the default browser prompt
-  installButton.style.display = 'block'; // Show the custom install button
-
-  // Handle the click event on the install button
-  installButton.addEventListener('click', () => {
-    event.prompt(); // Show the browser's install prompt
-    event.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-        installButton.style.display = 'none'; // Hide the install button after installation
-      } else {
-        console.log('User dismissed the install prompt');
-      }
-    });
-  });
-});
-
         // JavaScript function to play audio
         function playSound(soundFileName) {
             var audio = new Audio(soundFileName);
             audio.play();
         }
+
+        // JavaScript function to stop all sounds
+        function stopAllSounds() {
+            var audioElements = document.querySelectorAll("audio");
+            audioElements.forEach(function (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+            });
+        }
     </script>
     <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js')
-      .then(function(registration) {
-        console.log('Service Worker registered with scope:', registration.scope);
-      })
-      .catch(function(error) {
-        console.error('Service Worker registration failed:', error);
-      });
-  }
-</script>
-
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(function(registration) {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(function(error) {
+                    console.error('Service Worker registration failed:', error);
+                });
+        }
+    </script>
 </body>
 </html>
