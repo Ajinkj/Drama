@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Drama Sounds">
+    <meta property="og:title" content="ThinkerBytes">
+    <meta property="og:description" content="Drama Sounds, An music app by ThinkerBytes Foundations.">
+    <meta property="og:image" content="https://ajinkj.github.io/Drama/drama.jpg">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ThinkerBytes">
     <title>Bible Drama Sounds</title>
     <!-- Include Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -164,6 +171,7 @@
         }
     </script>
     <script>
+        // Register a service worker (your existing code)
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('service-worker.js')
                 .then(function(registration) {
@@ -173,6 +181,31 @@
                     console.error('Service Worker registration failed:', error);
                 });
         }
+
+        // Listen for the beforeinstallprompt event
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (event) => {
+            event.preventDefault(); // Prevent the default browser prompt
+            deferredPrompt = event;
+            document.getElementById('installButton').style.display = 'block'; // Show the custom install button
+        });
+
+        // Add a click event listener to the custom Install App button
+        document.getElementById('installButton').addEventListener('click', () => {
+            if (deferredPrompt) {
+                // Show the browser's install prompt
+                deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                        document.getElementById('installButton').style.display = 'none'; // Hide the custom button
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                });
+            }
+        });
     </script>
     
     
